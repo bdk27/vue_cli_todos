@@ -3,7 +3,7 @@
         <div class="todo-container">
             <div class="todo-wrap">
                 <UserHeader :addTodo="addTodo"></UserHeader>
-                <UserList :todos="todos"></UserList>
+                <UserList :todos="todos" :checkTodo="checkTodo" :deleteTodo="deleteTodo"></UserList>
                 <UserFooter></UserFooter>
             </div>
         </div>
@@ -30,6 +30,18 @@
         methods: {
             addTodo(todoObj) {
                 this.todos.unshift(todoObj);
+            },
+            checkTodo(id) {
+                this.todos.forEach((todo) =>{
+                    if(todo.id === id) {
+                        todo.completed = !todo.completed;
+                    }
+                });
+            },
+            deleteTodo(id) {
+                this.todos = this.todos.filter((todo) =>{
+                    return todo.id !== id
+                });
             },
         },
        

@@ -1,6 +1,14 @@
 <template>
     <ul class="todo-main">
-        <UserItem v-for="item in todos" :key="item.id" :todo="item"></UserItem>
+        <UserItem 
+            v-for="item in todos" 
+            :key="item.id" 
+            :todo="item" 
+            :checkTodo="checkTodo"
+            :deleteTodo="deleteTodo"
+        >
+            
+        </UserItem>
     </ul>
 </template>
 
@@ -17,7 +25,8 @@
                
             }
         },
-        props: ['todos'],
+        props: ['todos','checkTodo','deleteTodo'],
+
     }
 </script>
 

@@ -1,10 +1,10 @@
 <template>
     <li>
         <label>
-            <input type="checkbox" :checked="todo.completed">
+            <input type="checkbox" :checked="todo.completed" @change="handleCheck(todo.id)">
             <span>{{ todo.title }}</span>
         </label>
-        <button class="btn btn-danger" style="display: none">刪除</button>
+        <button class="btn btn-danger" @click="deleteBtn(todo.id)">刪除</button>
     </li>
 </template>
 
@@ -17,7 +17,17 @@
             }
         },
         // 聲明接收todo對象
-        props: ['todo'],
+        props: ['todo','checkTodo','deleteTodo'],
+        methods: {
+            handleCheck(id) {
+                this.checkTodo(id)
+            },
+            deleteBtn(id) {
+                if(confirm('確定刪除嗎?')) {
+                    this.deleteTodo(id)
+                }
+            },
+        },
     }
 </script>
 
@@ -49,5 +59,11 @@
     }
     li:last-child{
         border-bottom: none;
+    }
+    li:hover{
+        background-color: #ddd;
+    }
+    li:hover button{
+        display: block;
     }
 </style>
