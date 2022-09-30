@@ -4,7 +4,7 @@
             <div class="todo-wrap">
                 <UserHeader :addTodo="addTodo"/>
                 <UserList :todos="todos" :checkTodo="checkTodo" :deleteTodo="deleteTodo"/>
-                <UserFooter :todos="todos"/>
+                <UserFooter :todos="todos" :checkAllTodo="checkAllTodo" :clearAllTodo="clearAllTodo"/>
             </div>
         </div>
     </div>
@@ -41,6 +41,16 @@
             deleteTodo(id) {
                 this.todos = this.todos.filter((todo) =>{
                     return todo.id !== id
+                });
+            },
+            checkAllTodo(done) {
+                this.todos.forEach((todo) =>{
+                    todo.completed = done;
+                });
+            },
+            clearAllTodo() {
+                this.todos = this.todos.filter((todo) =>{
+                    return !todo.completed;
                 });
             },
         },
