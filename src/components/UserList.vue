@@ -6,9 +6,7 @@
             :todo="item" 
             :checkTodo="checkTodo"
             :deleteTodo="deleteTodo"
-        >
-            
-        </UserItem>
+        />
     </ul>
 </template>
 
